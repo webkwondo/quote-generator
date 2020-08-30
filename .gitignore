@@ -1,16 +1,54 @@
-# Node rules:
-## Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
-.grunt
+###########
+# Python #
+###########
+*.pyc
+*.pyo
 
-## Dependency directory
-## Commenting this out is preferred by some people, see
-## https://docs.npmjs.com/misc/faq#should-i-check-my-node_modules-folder-into-git
+
+###########
+# Eclipse #
+###########
+.project
+.pydevproject
+.settings/
+
+
+########
+# IDEA #
+########
+.idea
+
+
+#######
+# vim #
+#######
+*.sw[a-p]
+.ropeproject
+
+
+############
+# Haystack #
+############
+haystack_index/
+
+
+#########
+# Local #
+#########
+local.*
+database.sqlite3
+/static_files/
+
+
+##############
+# Exceptions #
+##############
+!*.sample
+/xml/
+/xml.bak/
+/xml.tmp/
+
 node_modules
-
-# Book build output
-_book
-
-# eBook build output
-*.epub
-*.mobi
-*.pdf
+.DS_Store
+Thumbs.db
+Thumbs.db:encryptable
