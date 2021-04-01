@@ -1,3 +1,5 @@
+"use strict";
+
 const quoteContainer = document.querySelector('.js-quote-container');
 const quoteText = document.querySelector('.js-quote-text');
 const authorText = document.querySelector('.js-quote-author');
@@ -29,19 +31,12 @@ async function getQuote() {
     const data = await response.json();
 
     // If Author is blank, add 'Unknown'
-    if (data.quoteAuthor === '') {
-      authorText.innerText = 'Unknown';
-    } else {
-      authorText.innerText = data.quoteAuthor;
-    }
+    authorText.textContent = (!data.quoteAuthor) ? 'Unknown' : data.quoteAuthor;
 
     // Reduce font size for long quotes
-    if (data.quoteText.length > 120) {
-      quoteText.classList.add('quote__text--long');
-    } else {
-      quoteText.classList.remove('quote__text--long');
-    }
-    quoteText.innerText = data.quoteText;
+    quoteText.classList.toggle('quote__text--long', data.quoteText.length > 120);
+
+    quoteText.textContent = data.quoteText;
 
     // Stop loader, show quote
     hideLoadingSpinner();
@@ -52,8 +47,8 @@ async function getQuote() {
 }
 
 function tweetQuote() {
-  const quote = quoteText.innerText;
-  const author = authorText.innerText;
+  const quote = quoteText.textContent;
+  const author = authorText.textContent;
   const twitterUrl = `https://twitter.com/intent/tweet?text="${quote}" ~ ${author}`;
   window.open(twitterUrl, '_blank');
 }
